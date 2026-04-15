@@ -56,6 +56,13 @@
             hold-trigger-on-release;
             hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 34 35 36 46 47 48 49 50 51 52 60 61 62 63 64 65 66 67 37 38 53 68 69 70 15 29 15 16 30>;
         };
+
+        copy_cut_td: copy_cut_td {
+            compatible = "zmk,behavior-tap-dance";
+            label = "COPY_CUT_TD";
+            #binding-cells = <0>;
+            bindings = <&kp LC(C)>, <&kp LC(X)>;
+        };
     };
 
     combos {
@@ -74,8 +81,8 @@
             display-name = "Base";
             bindings = <
 &kp EQUAL        &kp N1           &kp N2           &kp N3        &kp N4             &kp N5   &tog 1                                                      &mo 4          &kp N6  &kp N7              &kp N8        &kp N9            &kp N0              &kp MINUS
-&kp TAB          &kp Q            &kp W            &kp E         &kp R              &kp T    &none                                                       &none          &kp Y   &kp U               &kp I         &kp O             &kp P               &kp BSLH
-&kp ESC          &hml LEFT_WIN A  &hml LEFT_ALT S  &hml LCTRL D  &hml LEFT_SHIFT F  &lt 1 G  &none      &kp LCTRL   &kp LALT      &kp LGUI   &kp RCTRL   &none          &kp H   &hmr RIGHT_SHIFT J  &hmr RCTRL K  &hmr RIGHT_ALT L  &hmr LEFT_WIN SEMI  &kp SQT
+&kp TAB          &kp Q            &kp W            &kp E         &kp R              &kp T    &none                                                       &kp LC(V)      &kp Y   &kp U               &kp I         &kp O             &kp P               &kp BSLH
+&kp ESC          &hml LEFT_WIN A  &hml LEFT_ALT S  &hml LCTRL D  &hml LEFT_SHIFT F  &lt 1 G  &none      &kp LCTRL   &kp LALT      &kp LGUI   &kp RCTRL   &copy_cut_td   &kp H   &hmr RIGHT_SHIFT J  &hmr RCTRL K  &hmr RIGHT_ALT L  &hmr LEFT_WIN SEMI  &kp SQT
 &shift_capsword  &kp Z            &kp X            &kp C         &kp V              &kp B                           &kp HOME      &kp PG_UP                             &kp N   &kp M               &kp COMMA     &kp DOT           &kp FSLH            &kp RSHFT
 &mo 3            &kp GRAVE        &kp CAPS         &kp LEFT      &kp RIGHT                   &kp SPACE  &kp RETURN  &kp END       &kp PG_DN  &kp DELETE  &kp BACKSPACE          &kp UP              &kp DOWN      &kp LBKT          &kp RBKT            &mo 3
             >;
@@ -84,11 +91,11 @@
         keypad {
             display-name = "Kp";
             bindings = <
-&kp EQUAL  &kp N1     &kp N2    &kp N3    &kp N4     &kp N5  &trans                                                   &mo 4      &kp N6  &kp KP_NUM  &kp KP_EQUAL  &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp MINUS
-&kp TAB    &kp Q      &kp W     &kp E     &kp R      &kp T   &none                                                    &none      &kp Y   &kp KP_N7   &kp KP_N8     &kp KP_N9      &kp KP_MINUS     &kp BSLH
-&kp ESC    &kp A      &kp S     &kp D     &kp F      &kp G   &none     &kp LCTRL  &kp LALT      &kp LGUI   &kp RCTRL  &none      &kp H   &kp KP_N4   &kp KP_N5     &kp KP_N6      &kp KP_PLUS      &kp SQT
-&kp LSHFT  &kp Z      &kp X     &kp C     &kp V      &kp B                        &kp HOME      &kp PG_UP                        &kp N   &kp KP_N1   &kp KP_N2     &kp KP_N3      &kp KP_ENTER     &kp RSHFT
-&mo 3      &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp BSPC  &kp DEL    &kp END       &kp PG_DN  &kp ENTER  &kp KP_N0          &kp UP      &kp DOWN      &kp KP_DOT     &kp RBKT         &mo 3
+&kp EQUAL  &kp N1     &kp N2    &kp N3    &kp N4     &kp N5  &trans                                                   &mo 4          &kp N6  &kp KP_NUM       &kp KP_EQUAL     &kp KP_DIVIDE  &kp KP_MULTIPLY  &kp MINUS
+&kp TAB    &kp Q      &kp W     &kp E     &kp R      &kp T   &none                                                    &trans         &kp Y   &kp KP_N7        &kp KP_N8        &kp KP_N9      &kp KP_MINUS     &kp BSLH
+&kp ESC    &kp A      &kp S     &kp D     &kp F      &kp G   &none     &kp LCTRL  &kp LALT      &kp LGUI   &kp RCTRL  &trans         &kp H   &kp KP_N4        &kp KP_N5        &kp KP_N6      &kp KP_PLUS      &kp SQT
+&kp LSHFT  &kp Z      &kp X     &kp C     &kp V      &kp B                        &kp HOME      &kp PG_UP                            &kp N   &kp KP_N1        &kp KP_N2        &kp KP_N3      &kp KP_ENTER     &kp RSHFT
+&mo 3      &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp BSPC  &kp DEL    &kp END       &kp PG_DN  &kp ENTER  &kp BACKSPACE          &kp KP_NUMBER_0  &kp KP_NUMBER_0  &kp KP_DOT     &kp RBKT         &mo 3
             >;
         };
 
@@ -96,8 +103,8 @@
             display-name = "Game";
             bindings = <
 &kp EQUAL  &kp N1     &kp N2    &kp N3    &kp N4     &kp N5  &tog 1                                                         &mo 4          &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp TAB    &kp Q      &kp W     &kp E     &kp R      &kp T   &none                                                          &none          &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
-&kp ESC    &kp A      &kp S     &kp D     &kp F      &kp G   &none      &kp DEL     &kp LEFT_WIN      &kp B      &kp RCTRL  &none          &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
+&kp TAB    &kp Q      &kp W     &kp E     &kp R      &kp T   &none                                                          &trans         &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
+&kp ESC    &kp A      &kp S     &kp D     &kp F      &kp G   &none      &kp DEL     &kp LEFT_WIN      &kp B      &kp RCTRL  &trans         &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
 &kp LSHFT  &kp Z      &kp X     &kp C     &kp V      &kp B                          &kp HOME          &kp PG_UP                            &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
 &mo 3      &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp SPACE  &kp RETURN  &kp END           &kp PG_DN  &kp G      &kp BACKSPACE          &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 3
             >;
