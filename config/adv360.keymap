@@ -74,6 +74,29 @@
         };
     };
 
+    macros {
+        enter_chat: enter_chat {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RET &to 5>;
+            label = "ENTER_CHAT";
+        };
+
+        send_chat: send_chat {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RET &to 2>;
+            label = "SEND_CHAT";
+        };
+
+        cancel_chat: cancel_chat {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp ESC &to 2>;
+            label = "CANCEL_CHAT";
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -102,11 +125,11 @@
         extra1 {
             display-name = "Game";
             bindings = <
-&kp EQUAL  &kp N1     &kp N2    &kp N3    &kp N4     &kp N5  &tog 1                                                                         &to 0      &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp TAB    &kp Q      &kp W     &kp E     &kp R      &kp T   &none                                                                          &kp F      &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
-&kp ESC    &kp A      &kp S     &kp D     &kp F      &kp G   &none          &kp DEL     &kp LEFT_WIN      &kp B             &kp ESCAPE      &kp TAB    &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z      &kp X     &kp C     &kp V      &kp B                              &kp HOME          &kp LEFT_ALT                                 &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-&mo 3      &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp BACKSPACE  &kp RETURN  &kp END           &kp LEFT_CONTROL  &kp LEFT_SHIFT  &kp SPACE          &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 3
+&kp EQUAL  &kp N1     &kp N2    &kp N3    &kp N4     &kp N5  &tog 1                                                                          &kp GRAVE  &kp N6  &kp N7  &kp N8     &kp N9    &kp N0    &kp MINUS
+&kp TAB    &kp Q      &kp W     &kp E     &kp R      &kp T   &none                                                                           &kp F      &kp Y   &kp U   &kp I      &kp O     &kp P     &kp BSLH
+&kp ESC    &kp A      &kp S     &kp D     &kp F      &kp G   &none          &kp DEL      &kp LEFT_WIN      &to 0             &kp ESCAPE      &kp TAB    &kp H   &kp J   &kp K      &kp L     &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z      &kp X     &kp C     &kp V      &kp B                               &kp HOME          &kp LEFT_ALT                                 &kp N   &kp M   &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
+&mo 3      &kp GRAVE  &kp CAPS  &kp LEFT  &kp RIGHT          &kp BACKSPACE  &enter_chat  &kp END           &kp LEFT_CONTROL  &kp LEFT_SHIFT  &kp SPACE          &kp UP  &kp DOWN   &kp LBKT  &kp RBKT  &mo 3
             >;
         };
 
@@ -135,11 +158,11 @@
         extra2 {
             display-name = "Chat";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans                                      &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans
+&trans        &trans  &trans  &trans  &trans  &trans  &trans                                                &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans  &trans  &trans  &trans  &trans  &trans                                                &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&cancel_chat  &trans  &trans  &trans  &trans  &trans  &trans  &trans      &trans      &trans  &cancel_chat  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans  &trans  &trans  &trans  &trans                      &trans      &trans                        &trans  &trans  &trans  &trans  &trans  &trans
+&trans        &trans  &trans  &trans  &trans          &trans  &send_chat  &trans      &trans  &trans        &trans          &trans  &trans  &trans  &trans  &trans
             >;
         };
 
